@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>4. Übung - Bildverarbeitung - WS2016/17</title>
+  </head>
+  <body>
+    <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr>
+          <td style="font-weight: bold;"><a href="http://www.htw-berlin.de/">HTW-Berlin</a></td>
+          <td style="font-weight: bold; text-align: center;"><a href="http://imi.htw-berlin.de/"><b></b></a><b><a target="_blank" href="http://imi-bachelor.htw-berlin.de/">Internationaler Studiengang Medieninformatik (IMI-B)</a></b></td>
+          <td style="font-weight: bold; text-align: right;">Bildverarbeitung
+            (WS2016/17)</a></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">
+              Prof. Dr. Gefei Zhang</td>
+          <td style="font-weight: bold; text-align: center;">&nbsp;</td>
+          <td style="font-weight: bold; text-align: right;">4. Übung</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>Berechnung statistischer Bildgrößen<br>
+    </h3>
+    <font size="3">In dieser Übung soll eine Anwendung erstellt werden, 
+die in der Lage ist, ein Bild anzuzeigen und seine wichtigsten 
+statistischen Kenndaten zu berechnen. Mit der Bearbeitung dieser Aufgabe
+ lernen Sie darüber hinaus, wie man den Java AWT-Grafikkontext benutzt, 
+um eigene Zeichnungen zur Anzeige zu bringen.<br>
+      <br>
+    </font><span style="font-style: italic;">Ausgabe der Übung:</span><br>
+    Fr, 25.11.2016<br>
+    <br>
+    <span style="font-style: italic;">Abgabe spätestens am:</span><br>
+    Mo, 05.12.2016 um 09:00 Uhr <br>
+    <h4>Allgemeine Hinweise</h4>
+    <ul>
+      <li>Diese Aufgabe kann in Gruppen zu maximal 2 Personen bearbeitet werden.</li>
+      <li>Ein Teil der Aufgabe ist optional.<br>
+      </li>
+    </ul>
+    <ul>
+    </ul>
+    <h4>Aufgabenstellung</h4>
+    <ol>
+      <li>Nehmen Sie <a href="Ue4_Vorgabe.zip">dieses Archiv</a> <font size="3">als
+ Ausgangsbasis für Ihre eigene Arbeit und bringen Sie das Programm unter
+ Eclipse zum Laufen. Benennen Sie das Projekt gemäß der <a
+   href="http://people.f4.htw-berlin.de/~zhangg/teaching/ss16/bv/">Konvention für die Abgabe</a>
+ Ihrer Übungen um. Analysieren Sie das Programm und machen Sie sich mit 
+der Funktion der einzelnen Klassen vertraut. Betrachten Sie vor allem 
+die mit "TODO" gekennzeichneten Stellen.<br>
+        </font></li>
+      <ul>
+        <li><font size="3"><i>ImageAnalysis.java</i>: Darin befindet sich das Hauptprogramm mit dem Layout des GUI.<br>
+          </font></li>
+        <li><i>HistoView,java</i>: Eine von <i>java.swing.JPanel</i> abgeleitete Klasse, die zur Anzeige eines Histogramms dienen soll.</li>
+        <li><i>StatsView.java</i>: Eine von <i>java.swing.JPanel</i> abgeleitete Klasse, die zur Anzeige statistischer Bildgrößen dienen soll.</li>
+        <li><i>ImageView.java</i>: Hilfsklasse zur Anzeige von Bildern wie aus den letzten Übungen.<br>
+          <font size="3"></font><font size="3"> &nbsp;</font></li>
+      </ul>
+      <li>Legen Sie in <font size="3"><i>ImageAnalysis</i></font> ein 
+Array an, das Sie mit den ARGB-Pixeln des geladenen Bildes füllen, bevor
+ dieses Bild irgendwie verändert wird ("Original-Pixel"). Dies wird der 
+Ausgangspunkt all Ihrer Bildmanipulationen (Helligkeit, Kontrast, 
+Autokontrast siehe Punkt 5 und 6). An welchen Stellen im Source-Code 
+müssen Sie das Array der "Original-Pixel" befüllen?<br>
+        &nbsp;<font size="3"><img style="float: right;" alt="Histogramm" src="histogramm.png" hspace="10" vspace="10"></font><font size="3"></font></li>
+      <li><font size="3">Berechnen und zeichnen Sie ein Histogramm der Graustufen </font><font size="3">des aktuell angezeigten Bildes.</font></li>
+      <ul>
+        <li><font size="3">Berechnen Sie in <i>processImage()</i> der Klasse </font><font size="3"><i>ImageAnalysis</i></font><font size="3"> das Histogramm. </font><font size="3">Übergeben Sie das Resultat der Klasse </font><i>HistoView</i><font size="3"> und der Klasse </font><i>StatsView.</i><font size="3"><br>
+          </font></li>
+        <li><font size="3">Implementieren Sie in </font><font size="3"></font><i>HistoView</i><font size="3"></font><font size="3">
+ das Zeichnen des Histogramms. In der Vorgabe sehen Sie, wie man Linien 
+zeichnet. Nun müssen Sie für jeden Eintrag im Histogramm-Array eine 
+geeignete senkrechte Linie zeichnen. Das Histogramm soll so skaliert 
+werden, dass der höchste Peak die volle Höhe des Anzeigebereichs 
+ausnutzt.<br>
+            &nbsp;</font></li>
+      </ul>
+      <li><font size="3">Berechnen Sie die folgenden statistischen Signalgrößen aus dem Histogramm, das Sie zuvor der Klasse </font><font size="3"></font><i>StatsView</i><font size="3"> übergeben haben:</font><br>
+        <ul>
+          <li><font size="3">Minimalwert</font></li>
+          <li><font size="3">Maximalwert</font></li>
+          <li><font size="3">Mittelwert</font></li>
+          <li><font size="3">Varianz</font></li>
+          <li><font size="3">Medianwert</font></li>
+          <li><font size="3">Entropie [Bits]</font>
+          </li>
+        </ul>
+        Zeigen Sie die berechneten Werte in <i>StatsView</i> an. Hier ein <a title="Screenshot 1" href="Screen1.jpg">Screenshot</a>. <i><br>
+          <br>
+          Hinweis:</i> Die Folien aus der Vorlesung beinhalten 
+Berechnungsvorschriften für diese Größen auf Grundlage eines 
+Histogramms. Einzige Ausnahme ist der Medianwert. Falls Sie den Median 
+wie auf den Folien angegeben direkt aus den Graustufen des Bildes 
+berechnen wollen, dann müssen Sie der Klasse <font size="3"></font><font size="3"></font><i>StatsView</i><font size="3"></font>
+ zusätzlich das aktuelle Pixel-Array übergeben. Alternativ k&ouml;nnen Sie
+ Median auch aus
+ dem Histogramm berechnen wollen.<br>
+        &nbsp;&nbsp; </li>
+      <li><font size="3">Jetzt sollen im Programm Funktionalitäten zur 
+Veränderung des Bildes eingebaut werden. Verwenden Sie den vorhandenen 
+Helligkeitsregler, um die Helligkeit des Bildes zu erhöhen oder zu 
+erniedrigen. Ergänzen Sie das Programm um einen weiteren Slider, der den
+ Kontrast des Bildes verändert. (Was ist ein geeigneter Wertebereich für
+ den Kontrast-Slider?) </font><font size="3">Achten Sie darauf, 
+dass&nbsp;kein Over- oder Underflow auftritt. Die Graustufe eines Pixels
+ muss immer im Bereich zwischen 0 und 255 liegen.</font><br>
+        <font size="3">&nbsp;</font><br>
+      </li>
+      <li><font size="3"><img style="float: right;" alt="Autokontrast" src="Autokontrast.png" hspace="10" vspace="10"><i><a name="Autokontrast"></a>Optional: </i>Als
+ optionale Zugabe kann die Funktion "Auto-Kontrast" realisiert werden. 
+Fügen Sie dafür einen entsprechenden Button hinzu. Im einfachsten Fall 
+nehmen Sie für den Histogrammausgleich die oben berechneten Minimal- und
+ Maximalwerte der Graustufen. <i></i>Oder Sie implementieren den 
+"Auto-Kontrast" wie in gängigen Bildverarbeitungsprogrammen: Dazu 
+bestimmen Sie im Histogramm die Graustufen, bis zu denen 1% bzw. 99% 
+aller Werte liegen. Diese Werte verwenden Sie dann anstelle des Minimums
+ bzw. Maximums, um den Histogrammausgleich des Eingangsbildes 
+durchzuführen.<br>
+          &nbsp;<br>
+        </font><font size="3">Führen Sie die Transformation der 
+Helligkeitswerte entsprechend dem nebenstehenden Bild durch und geben 
+Sie das neue transformiere Bild aus. </font><font size="3">Ein geeignetes <a href="lowContrast.jpg">Testbild mit sehr geringer Dynamik finden Sie hier</a>.</font></li>
+    </ol>
+    <font size="3"><br>
+      Wie eine Lösung aussehen könnte, sehen&nbsp;Sie <a title="Screenshot 1" href="Screen1.jpg">hier</a>.<br>
+      <br>
+      <a title="Screenshot 2" href="Screen2.jpg">Hier</a>
+ ein Screenshot bei angewendetem Autokontrast. Beachten Sie, dass auf 
+Grund von Rundungsfehlern und Implementationsdetails Ihre Werte ggf. 
+geringfügig abweichen können.<br>
+    </font>
+  
+
+</body></html>
